@@ -1,0 +1,12 @@
+<div class="vehicle-container">
+  <mat-card *ngFor="let v of vehicles" class="vehicle-card">
+    <mat-card-title>{{ v.model }} ({{ v.manufacturingYear }})</mat-card-title>
+    <mat-card-content>
+      <p>Cor: {{ v.color }}</p>
+      <p>Preço: {{ v.basePrice | currency: 'BRL' }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="viewDetails(v)">Detalhes</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

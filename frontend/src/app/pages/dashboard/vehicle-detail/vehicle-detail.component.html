@@ -1,0 +1,11 @@
+<mat-card *ngIf="vehicle" class="vehicle-detail-card">
+  <mat-card-title>{{ vehicle.model }} ({{ vehicle.manufacturingYear }})</mat-card-title>
+  <mat-card-content>
+    <p>Cor: {{ vehicle.color }}</p>
+    <p>Preço: {{ vehicle.basePrice | currency:'BRL' }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+    <button mat-stroked-button color="accent" (click)="voltar()">Voltar</button>
+  </mat-card-actions>
+</mat-card>

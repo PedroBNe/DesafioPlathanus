@@ -1,0 +1,22 @@
+<mat-card *ngFor="let item of vehicleList" class="cart-card">
+  <mat-card-title>{{ item.vehicle.model }} ({{ item.vehicle.manufacturingYear }})</mat-card-title>
+  <mat-card-content>
+    <p>Cor: {{ item.vehicle.color }}</p>
+    <p>Preço base: {{ item.vehicle.basePrice | currency:'BRL' }}</p>
+    <p *ngIf="perfil === 'CLIENTE'">
+      Tipo de comprador:
+      {{ item.vehicle.pcd ? 'Pessoa Física PCD' : item.vehicle.pessoaJuridica ? 'Pessoa Jurídica' : 'Pessoa Física' }}
+    </p>
+    <p><strong>Preço final:</strong> {{ calcularPrecoFinal(item.vehicle) | currency:'BRL' }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button color="warn" (click)="cancelar(item.cart.id)">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="total-card" *ngIf="vehicleList.length > 0">
+  <mat-card-content>
+    <h3>Total: {{ finalPriceTotal | currency:'BRL' }}</h3>
+    <button mat-raised-button color="primary" (click)="efetivarTodos()">Efetivar Tudo</button>
+  </mat-card-content>
+</mat-card>
